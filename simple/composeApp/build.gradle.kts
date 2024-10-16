@@ -62,7 +62,7 @@ kotlin {
 }
 
 android {
-    namespace = "org.company.app"
+    namespace = "io.github.sample"
     compileSdk = 35
 
     defaultConfig {

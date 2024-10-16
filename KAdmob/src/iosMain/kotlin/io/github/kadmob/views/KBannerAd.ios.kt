@@ -24,14 +24,5 @@ actual fun KBannerAd(modifier: Modifier, type: KAdmobBannerType, adUnitId: Strin
             // Return the banner ad view
             bannerAdView
         },
-        update = { bannerAdView ->
-            val frame = bannerAdView.frame
-            frame.useContents {
-                println("width ${this.size.width}")
-                println("height ${this.size.height}")
-
-
-            }
-        }
     )
 }

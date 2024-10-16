@@ -64,9 +64,13 @@ internal fun App() = AppTheme {
             Text("rewardedInterstitialAd")
         }
         KBannerAd(
-            modifier = Modifier.fillMaxWidth().height(100.dp),
-            type = KAdmobBannerType.BANNER, "ca-app-pub-7284367511062855/9759925938"
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(150.dp),
+            type = KAdmobBannerType.LARGE_BANNER,
+            adUnitId = "ca-app-pub-3940256099942544/6300978111" // Test ID
         )
+
 
     }
 }
