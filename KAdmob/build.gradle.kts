@@ -1,5 +1,6 @@
 @file:OptIn(ExperimentalKotlinGradlePluginApi::class)
 
+import com.vanniktech.maven.publish.SonatypeHost
 import org.gradle.nativeplatform.platform.internal.DefaultNativePlatform.getCurrentOperatingSystem
 import org.jetbrains.compose.ExperimentalComposeLibrary
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
@@ -38,42 +39,43 @@ tasks.withType<PublishToMavenRepository> {
     }
 }
 
-//
-//
-//mavenPublishing {
-//    coordinates("${groupId}", "${artifacts}", ${version})
-//
-//    publishToMavenCentral(SonatypeHost.S01)
-//    signAllPublications()
-//
-//    pom {
-//        name.set("${lib.name}")
-//        description.set("${lib.description}")
-//        url.set("${lib.url}")
-//        licenses {
-//            license {
-//                name.set("Apache-2.0")
-//                url.set("https://opensource.org/licenses/Apache-2.0")
-//            }
-//        }
-//        issueManagement {
-//            system.set("${github}")
-//            url.set("${lib.issue.github}")
-//        }
-//        scm {
-//            connection.set("${lib.github.git}")
-//            url.set("${lib.url}")
-//        }
-//        developers {
-//            developer {
-//                id.set("${lib.developer.nameId}")
-//                name.set("${lib.developer.name}")
-//                email.set("${lib.developer.name}")
-//            }
-//        }
-//    }
-//
-//}
+
+
+mavenPublishing {
+    coordinates("io.github.the-best-is-best", "kadmob", "1.0.0-rc1")
+
+    publishToMavenCentral(SonatypeHost.S01, true)
+    signAllPublications()
+
+    pom {
+        name.set("KAdmob")
+        description.set("KAdmob is a Kotlin Multiplatform Mobile (KMM) library that enables seamless integration of Google AdMob advertisements in Android and iOS applications using a unified codebase. It provides a simplified interface for displaying banner ads, interstitial ads, and rewarded video ads across both platforms with minimal configuration")
+        url.set("https://github.com/the-best-is-best/KMMAdmob")
+        licenses {
+            license {
+                name.set("Apache-2.0")
+                url.set("https://opensource.org/licenses/Apache-2.0")
+            }
+        }
+        issueManagement {
+            system.set("GITHUB  ")
+            url.set("https://github.com/the-best-is-best/KMMAdmob")
+        }
+        scm {
+            connection.set("https://github.com/the-best-is-best/KMMAdmob.git")
+            url.set("https://github.com/the-best-is-best/KMMAdmob")
+        }
+        developers {
+            developer {
+                id.set("MichelleRaouf")
+                name.set("Michelle Raouf")
+                email.set("eng.michelle.raouf@gmail.com")
+
+            }
+        }
+    }
+
+}
 
 
 signing {
