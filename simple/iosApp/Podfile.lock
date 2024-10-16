@@ -1,0 +1,25 @@
+PODS:
+  - Google-Mobile-Ads-SDK (11.10.0):
+    - GoogleUserMessagingPlatform (>= 1.1)
+  - GoogleUserMessagingPlatform (2.6.0)
+  - KAdmob (0.1.0-13-rc):
+    - Google-Mobile-Ads-SDK (= 11.10.0)
+    - GoogleUserMessagingPlatform (= 2.6.0)
+
+DEPENDENCIES:
+  - KAdmob (= 0.1.0-13-rc)
+
+SPEC REPOS:
+  trunk:
+    - Google-Mobile-Ads-SDK
+    - GoogleUserMessagingPlatform
+    - KAdmob
+
+SPEC CHECKSUMS:
+  Google-Mobile-Ads-SDK: 13e6e98edfd78ad8d8a791edb927658cc260a56f
+  GoogleUserMessagingPlatform: 0c3a08353e53ce8c2feab7addd0b652cde522450
+  KAdmob: a351c2153fb3dfbdbdcde8f569bec0891bdc27d7
+
+PODFILE CHECKSUM: 9752f4a4839ec302e45d3754ce70e05156cb0680
+
+COCOAPODS: 1.15.2
