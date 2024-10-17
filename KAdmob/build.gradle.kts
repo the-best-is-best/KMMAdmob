@@ -42,7 +42,7 @@ tasks.withType<PublishToMavenRepository> {
 
 
 mavenPublishing {
-    coordinates("io.github.the-best-is-best", "kadmob", "1.0.0-rc1")
+    coordinates("io.github.the-best-is-best", "kadmob", "1.0.0-rc2")
 
     publishToMavenCentral(SonatypeHost.S01, true)
     signAllPublications()
