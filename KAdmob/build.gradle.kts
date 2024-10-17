@@ -58,7 +58,7 @@ mavenPublishing {
             }
         }
         issueManagement {
-            system.set("GITHUB  ")
+            system.set("GITHUB")
             url.set("https://github.com/the-best-is-best/KMMAdmob")
         }
         scm {
@@ -177,9 +177,6 @@ kotlin {
 
         }
 
-        jvmMain.dependencies {
-            implementation(compose.desktop.currentOs)
-        }
 
 
         iosMain.dependencies {
