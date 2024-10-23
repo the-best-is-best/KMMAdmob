@@ -42,7 +42,7 @@ tasks.withType<PublishToMavenRepository> {
 
 
 mavenPublishing {
-    coordinates("io.github.the-best-is-best", "kadmob", "1.0.0-rc2")
+    coordinates("io.github.the-best-is-best", "kadmob", "1.0.0")
 
     publishToMavenCentral(SonatypeHost.S01, true)
     signAllPublications()
@@ -132,7 +132,7 @@ kotlin {
         ios.deploymentTarget = "13"
 
         pod("KAdmob") {
-            version = "0.1.0-13-rc"
+            version = "0.1.2"
             extraOpts += listOf("-compiler-option", "-fmodules")
 
         }

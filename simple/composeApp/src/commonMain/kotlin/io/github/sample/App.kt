@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.material3.ElevatedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -21,17 +22,16 @@ import io.github.kadmob.KAdmobRewardedInterstitialAd
 import io.github.kadmob.model.KAdmobBannerType
 import io.github.kadmob.views.KBannerAd
 import io.github.sample.theme.AppTheme
+import kotlinx.coroutines.launch
 
 @Composable
 internal fun App() = AppTheme {
-    val interstitialAd = KAdmobInterstitialAd()
-    interstitialAd.loadInterstitialAd("ca-app-pub-7284367511062855/1974850970")
+    val interstitialAd = remember { KAdmobInterstitialAd() }
 
-    val rewardAd = KAdmobRewardedAd()
+    val rewardAd = remember { KAdmobRewardedAd() }
     rewardAd.loadRewardedAd("ca-app-pub-3940256099942544/1712485313")
 
-    val rewardedInterstitialAd = KAdmobRewardedInterstitialAd()
-    rewardedInterstitialAd.loadRewardedInterstitialAd("ca-app-pub-3940256099942544/6978759866")
+    val rewardedInterstitialAd = remember { KAdmobRewardedInterstitialAd() }
     val scope = rememberCoroutineScope()
     Column(
         modifier = Modifier
@@ -41,25 +41,45 @@ internal fun App() = AppTheme {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         ElevatedButton(onClick = {
+            interstitialAd.loadInterstitialAd("ca-app-pub-7284367511062855/1974850970")
+
+        }) {
+            Text("load new ad interstitialAd")
+        }
+        ElevatedButton(onClick = {
             interstitialAd.showInterstitialAd()
+
         }) {
             Text("InterstitialAd")
         }
         ElevatedButton(onClick = {
-            rewardAd.show {
-                it.onSuccess {
+            scope.launch {
+                val res = rewardAd.show(true)
+                res.onSuccess {
                     println("reward is $it")
                 }
             }
+
         }) {
             Text("rewardAd")
         }
         ElevatedButton(onClick = {
-            rewardedInterstitialAd.show {
-                it.onSuccess {
+            rewardedInterstitialAd.loadRewardedInterstitialAd("ca-app-pub-3940256099942544/6978759866")
+
+        }) {
+            Text("load new ad reward rewardedInterstitialAd")
+        }
+        ElevatedButton(onClick = {
+            scope.launch {
+                val res = rewardedInterstitialAd.show()
+                res.onSuccess {
                     println("rewardedInterstitialAd is $it")
                 }
+                res.onFailure {
+                    println("rewardedInterstitialAd error $it")
+                }
             }
+
         }) {
             Text("rewardedInterstitialAd")
         }
@@ -68,7 +88,7 @@ internal fun App() = AppTheme {
                 .fillMaxWidth()
                 .height(150.dp),
             type = KAdmobBannerType.LARGE_BANNER,
-            adUnitId = "ca-app-pub-3940256099942544/6300978111" // Test ID
+            adBannerUnitId = "ca-app-pub-3940256099942544/6300978111" // Test ID
         )
 
 

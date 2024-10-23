@@ -10,10 +10,11 @@ import io.github.kadmob.AndroidKAdmob.getActivity
 
 actual class KAdmobInterstitialAd actual constructor() {
     private var interstitialAd: InterstitialAd? = null
+    private var _adUnit: String? = null
 
     actual fun loadInterstitialAd(adUnitId: String) {
         val adRequest = AdRequest.Builder().build()
-
+        _adUnit = adUnitId
         // Load the interstitial ad
         InterstitialAd.load(
             getActivity(), // You need to provide an activity context
@@ -32,7 +33,7 @@ actual class KAdmobInterstitialAd actual constructor() {
         )
     }
 
-    actual fun showInterstitialAd() {
+    actual fun showInterstitialAd(reloadNewAd: Boolean) {
         if (interstitialAd != null) {
             interstitialAd?.fullScreenContentCallback = object : FullScreenContentCallback() {
                 override fun onAdDismissedFullScreenContent() {
@@ -47,6 +48,9 @@ actual class KAdmobInterstitialAd actual constructor() {
                     println("Ad is showing.")
                     interstitialAd =
                         null // Reset the interstitial ad to load a new one after it's shown
+                    if (reloadNewAd) {
+                        loadInterstitialAd(_adUnit!!)
+                    }
                 }
             }
             interstitialAd?.show(getActivity())

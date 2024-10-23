@@ -5,10 +5,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.viewinterop.UIKitView
 import cocoapods.KAdmob.KBannerAdView
 import io.github.kadmob.model.KAdmobBannerType
-import kotlinx.cinterop.useContents
 
 @Composable
-actual fun KBannerAd(modifier: Modifier, type: KAdmobBannerType, adUnitId: String) {
+actual fun KBannerAd(modifier: Modifier, type: KAdmobBannerType, adBannerUnitId: String) {
     UIKitView(
         modifier = modifier,
         factory = {
@@ -16,7 +15,7 @@ actual fun KBannerAd(modifier: Modifier, type: KAdmobBannerType, adUnitId: Strin
             // Create a CGRect for the banner ad
 
             // Initialize the KBannerAdView
-            val bannerAdView = KBannerAdView(adUnitId)
+            val bannerAdView = KBannerAdView(adBannerUnitId)
             // Load the ad
             bannerAdView.loadAdOfType(type.ordinal.toLong())
 

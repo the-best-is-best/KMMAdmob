@@ -21,13 +21,13 @@ KAdmob is available on `mavenCentral()`.
 ## Install
 
 ```kotlin
-implementation("io.github.the-best-is-best:kadmob:1.0.0-rc1")
+implementation("io.github.the-best-is-best:kadmob:1.0.1")
 ```
 
 ## Need add this in pod file if not exist run ` pod init `
 
 ```pod
-  pod 'KAdmob' , '0.1.0-13-rc'
+  pod 'KAdmob' , '0.1.2'
 ```
 
 ## How to use it
@@ -69,7 +69,7 @@ rewardedInterstitialAd.loadRewardedInterstitialAd("ca-app-pub-3940256099942544/6
     Text("InterstitialAd")
 }
 ElevatedButton(onClick = {
-    rewardAd.show {
+    rewardAd.show(reloadAd) {
         it.onSuccess {
             println("reward is $it")
         }
@@ -78,7 +78,7 @@ ElevatedButton(onClick = {
     Text("rewardAd")
 }
 ElevatedButton(onClick = {
-    rewardedInterstitialAd.show {
+    rewardedInterstitialAd.show(reloadAd) {
         it.onSuccess {
             println("rewardedInterstitialAd is $it")
         }
@@ -96,6 +96,3 @@ KBannerAd(
 
 ```
 
-#### Note
-
-- ad refreshed auto after show

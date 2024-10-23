@@ -9,7 +9,7 @@ import com.google.android.gms.ads.AdView
 import io.github.kadmob.model.KAdmobBannerType
 
 @Composable
-actual fun KBannerAd(modifier: Modifier, type: KAdmobBannerType, adUnitId: String) {
+actual fun KBannerAd(modifier: Modifier, type: KAdmobBannerType, adBannerUnitId: String) {
     AndroidView(
         modifier = modifier,
         factory = { context ->
@@ -22,7 +22,7 @@ actual fun KBannerAd(modifier: Modifier, type: KAdmobBannerType, adUnitId: Strin
                 }
                 setAdSize(adSize)
                 // Set the ad unit ID
-                this.adUnitId = adUnitId
+                adUnitId = adBannerUnitId
                 // Load the ad
                 loadAd(AdRequest.Builder().build())
             }

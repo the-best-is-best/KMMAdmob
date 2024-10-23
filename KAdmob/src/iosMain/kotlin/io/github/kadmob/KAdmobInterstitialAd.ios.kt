@@ -8,8 +8,8 @@ actual class KAdmobInterstitialAd actual constructor() {
         adManager.loadInterstitialAd(adUnitId)
     }
 
-    actual fun showInterstitialAd() {
-        adManager.showAd()
+    actual fun showInterstitialAd(reloadNewAd: Boolean) {
+        adManager.showAd(reloadNewAd)
     }
 
 }

@@ -12,10 +12,11 @@ class AdInterstitialManager : NSObject() {
 
     fun loadInterstitialAd(adUnitId: String) {
         interstitialAdView = InterstitialAdController(adUnitID = adUnitId)
+        interstitialAdView!!.loadInterstitialAd()
     }
 
-    fun showAd() {
-        interstitialAdView?.showInterstitialFrom(getCurrentUIViewController())
+    fun showAd(reloadNewAd: Boolean) {
+        interstitialAdView?.showInterstitialFrom(getCurrentUIViewController(), reloadNewAd)
 
     }
 }

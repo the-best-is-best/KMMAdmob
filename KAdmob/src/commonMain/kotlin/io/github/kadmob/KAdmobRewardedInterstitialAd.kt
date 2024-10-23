@@ -4,6 +4,6 @@ import io.github.kadmob.model.KAdmobRewardItem
 
 expect class KAdmobRewardedInterstitialAd() {
     fun loadRewardedInterstitialAd(adUnitId: String)
-    fun show(callback: (Result<KAdmobRewardItem?>) -> Unit)
+    suspend fun show(reloadNewAd: Boolean = false): Result<KAdmobRewardItem?>
 
 }

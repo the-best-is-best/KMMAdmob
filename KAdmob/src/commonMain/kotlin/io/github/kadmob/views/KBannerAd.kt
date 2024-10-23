@@ -8,5 +8,5 @@ import io.github.kadmob.model.KAdmobBannerType
 expect fun KBannerAd(
     modifier: Modifier,
     type: KAdmobBannerType,
-    adUnitId: String
+    adBannerUnitId: String
 )

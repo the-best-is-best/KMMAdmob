@@ -4,7 +4,9 @@ import cocoapods.KAdmob.RewardedAdController
 import io.github.kadmob.getCurrentUIViewController
 import io.github.kadmob.model.KAdmobRewardItem
 import kotlinx.cinterop.ExportObjCClass
+import kotlinx.coroutines.suspendCancellableCoroutine
 import platform.darwin.NSObject
+import kotlin.coroutines.resume
 
 @ExportObjCClass
 class AdRewardedManager : NSObject() {
@@ -13,18 +15,24 @@ class AdRewardedManager : NSObject() {
 
     fun loadInterstitialAd(adUnitId: String) {
         interstitialAdView = RewardedAdController(adUnitID = adUnitId)
+        interstitialAdView!!.loadRewardedAd()
     }
 
-    fun showAd(callback: (Result<KAdmobRewardItem?>) -> Unit) {
-        interstitialAdView?.showAdFrom(getCurrentUIViewController()) { rewardItem ->
-            val reward: KAdmobRewardItem? = if (rewardItem == null) null else KAdmobRewardItem(
-                rewardItem.type(),
-                rewardItem.amount().toInt()
-            )
+    suspend fun showAd(reloadNewAd: Boolean): Result<KAdmobRewardItem?> {
+        return suspendCancellableCoroutine { cont ->
 
-            callback(Result.success(reward))
+            interstitialAdView?.showAdFrom(
+                getCurrentUIViewController(),
+                reloadNewAd
+            ) { rewardItem ->
+                val reward: KAdmobRewardItem? = if (rewardItem == null) null else KAdmobRewardItem(
+                    rewardItem.type(),
+                    rewardItem.amount().toInt()
+                )
 
+                cont.resume(Result.success(reward))
 
+            }
         }
 
     }

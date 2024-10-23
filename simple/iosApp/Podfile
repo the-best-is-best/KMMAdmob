@@ -6,6 +6,6 @@ target 'iosApp' do
   use_frameworks!
 
   # Pods for iosApp
-  pod 'KAdmob' , '0.1.0-13-rc'
+  pod 'KAdmob' , '0.1.2'
 
 end
